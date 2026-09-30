@@ -1,4 +1,4 @@
-import { use, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import { InputBox } from './components'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
@@ -12,6 +12,7 @@ function App() {
 
   const currencyInfo = useCurrencyInfo(from)
   const options = Object.keys(currencyInfo)
+  console.log(from, currencyInfo, Object.keys(currencyInfo).length)
 
   const swap = () => {
     setFrom(to)
