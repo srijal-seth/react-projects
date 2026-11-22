@@ -1,8 +1,8 @@
 import React from 'react'
-import { Container, Logout, LogoutBtn } from '../index'
-import { Link } from 'react-router'
+import { Container, LogoutBtn } from '../index'
+import { Link, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
+import { Logo } from '../index'
 
 function Header() {
 

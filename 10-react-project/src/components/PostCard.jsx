@@ -1,5 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router'
+import appwriteService from '../appwrite/config'
 
 function PostCard({$id, title, featuredImage}) {
   return (

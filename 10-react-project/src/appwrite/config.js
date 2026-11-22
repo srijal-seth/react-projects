@@ -54,7 +54,7 @@ class Service{
 
     async deletePost(slug){
         try {
-            return await this.tablesDB.deleteRow(
+                await this.tablesDB.deleteRow(
                 conf.appWriteDatabaseId,
                 conf.appWriteCollectionId,
                 slug
@@ -73,7 +73,7 @@ class Service{
                 conf.appWriteCollectionId,
                 slug
             )
-            return true
+
         } catch (error) {
             console.log("AppWrite Services :: GetPost :: error", error)
             return false
@@ -94,22 +94,21 @@ class Service{
 
     async uploadFile(file){
         try {
-            return await this.bucket.getFile(
+            return await this.bucket.createFile(
                 conf.appWriteBucketId,
-                ID.unique,
+                ID.unique(),
                 file
             )
-            return true
         } catch (error) {
-            console.log("AppWrite :: UploadFile :: error", error)
+            console.log("AppWrite :: UploadFile :: error ", error)
             return false
         }
     }
 
     async deleteFile(fileId){
         try {
-            return await this.bucket.deleteFile(
-                appWriteBucketId,
+            await this.bucket.deleteFile(
+                conf.appWriteBucketId,
                 fileId
             )
             return true
@@ -121,7 +120,7 @@ class Service{
 
     getFilePreview(fileId){
         try {
-            return this.bucket.getFilePreview(
+            return this.bucket.getFileView(
                 conf.appWriteBucketId,
                 fileId
             )

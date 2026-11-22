@@ -10,8 +10,20 @@ class AuthService {
         this.client
             .setEndpoint(conf.appWriteUrl)
             .setProject(conf.appWriteProjectId);
+        
+        this.client.ping()
+            .then((response) => {
+            console.log("Connected to Appwrite:", response);
+            })
+            .catch((error) => {
+            console.log("Connection error:", error);
+            });
+
+
         this.account = new Account(this.client);
     }
+
+    
 
     async createAccount({email, password, name}) {
         try{
